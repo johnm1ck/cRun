@@ -198,9 +198,9 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
   bottom: 0;
   width: min(540px, 100%);
   min-height: calc(82px + env(safe-area-inset-bottom));
-  padding: 8px 12% calc(8px + env(safe-area-inset-bottom));
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom));
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: flex-start;
   transform: translateX(-50%);
   border-top: 1px solid var(--line);
@@ -208,7 +208,7 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
   background: var(--bottom-nav-glass);
   backdrop-filter: blur(18px);
 }
-.bottom-nav button { min-width: 60px; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 0; background: var(--transparent); color: var(--text-nav-muted); }
+.bottom-nav button { min-width: 0; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 0; background: var(--transparent); color: var(--text-nav-muted); }
 .bottom-nav button span { width: 43px; height: 40px; display: grid; place-items: center; border-radius: 14px; }
 .bottom-nav button small { font-size: 12px; font-weight: 600; }
 .bottom-nav button.active { color: var(--text-accent); }
