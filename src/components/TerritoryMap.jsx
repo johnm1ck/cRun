@@ -136,7 +136,7 @@ function TerritoryMap({ showPartners, locateSignal }) {
   return (
     <>
       <div className="map" ref={mapNode} />
-      {locationState && <div className="location-toast">{locationState}</div>}
+      {locateSignal > 0 && locationState && <div className="location-toast">{locationState}</div>}
     </>
   )
 }
