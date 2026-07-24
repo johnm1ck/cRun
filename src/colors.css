@@ -1,53 +1,55 @@
 :root {
   /* Core app palette */
-  --ink: #071d1b;
-  --surface: #0d2825;
-  --surface-2: #15312e;
-  --surface-brand: #102d29;
-  --surface-map: #0a2321;
-  --surface-toggle-active: #1b5550;
-  --surface-avatar: #31524d;
-  --surface-page-edge: #051513;
-  --surface-donation-progress: #2e4a43;
-  --surface-charity-logo-text: #0b2925;
-  --text-primary: #ecf3e8;
-  --muted: #91a7a0;
-  --text-nav-muted: #7f9690;
-  --text-mode-muted: #9bada7;
-  --text-chart-muted: #69827c;
-  --lime: #baff64;
-  --white: #f5f8ed;
+  --ink: #a7e7e0;
+  --surface: #ddf5f1;
+  --surface-2: #c8eee8;
+  --surface-brand: #eaf9f6;
+  --surface-map: #bfe9e3;
+  --surface-toggle-active: #bdefc8;
+  --surface-avatar: #b3d9d3;
+  --surface-page-edge: #8ed2ca;
+  --surface-donation-progress: #a8cec8;
+  --surface-charity-logo-text: #173b3a;
+  --text-primary: #173b3a;
+  --text-on-accent: #173b3a;
+  --text-accent: #2f7658;
+  --muted: #52736f;
+  --text-nav-muted: #5f7c78;
+  --text-mode-muted: #52736f;
+  --text-chart-muted: #698984;
+  --lime: #bdefc8;
+  --white: #f7fffd;
   --pure-white: #ffffff;
   --pure-black: #000000;
   --transparent: transparent;
 
   /* Borders, overlays, and shadows */
-  --line: rgba(235, 248, 231, 0.1);
-  --top-bar-glass: rgba(7, 29, 27, 0.96);
-  --accent-border: rgba(186, 255, 100, 0.32);
-  --map-fade-light: rgba(4, 22, 21, 0.06);
-  --map-fade-medium: rgba(4, 22, 21, 0.62);
-  --map-fade-heavy: rgba(4, 22, 21, 0.92);
-  --light-control: rgba(245, 248, 237, 0.96);
-  --runner-border: rgba(255, 255, 255, 0.12);
-  --runner-glass: rgba(8, 32, 30, 0.9);
-  --toast-glass: rgba(8, 32, 30, 0.86);
+  --line: rgba(23, 59, 58, 0.12);
+  --top-bar-glass: rgba(167, 231, 224, 0.96);
+  --accent-border: rgba(47, 118, 88, 0.28);
+  --map-fade-light: rgba(167, 231, 224, 0.08);
+  --map-fade-medium: rgba(167, 231, 224, 0.25);
+  --map-fade-heavy: rgba(142, 210, 202, 0.62);
+  --light-control: rgba(247, 255, 253, 0.96);
+  --runner-border: rgba(23, 59, 58, 0.12);
+  --runner-glass: rgba(234, 249, 246, 0.94);
+  --toast-glass: rgba(23, 59, 58, 0.88);
   --marker-border: rgba(255, 255, 255, 0.92);
-  --bottom-nav-glass: rgba(9, 31, 29, 0.96);
-  --shadow-app: rgba(0, 0, 0, 0.35);
-  --shadow-control: rgba(0, 0, 0, 0.2);
-  --shadow-control-strong: rgba(0, 0, 0, 0.24);
-  --shadow-action: rgba(0, 0, 0, 0.26);
-  --shadow-marker: rgba(0, 0, 0, 0.4);
+  --bottom-nav-glass: rgba(234, 249, 246, 0.96);
+  --shadow-app: rgba(23, 59, 58, 0.22);
+  --shadow-control: rgba(23, 59, 58, 0.14);
+  --shadow-control-strong: rgba(23, 59, 58, 0.18);
+  --shadow-action: rgba(23, 59, 58, 0.2);
+  --shadow-marker: rgba(23, 59, 58, 0.32);
 
   /* Accent transparencies */
-  --lime-06: rgba(186, 255, 100, 0.06);
-  --lime-08: rgba(186, 255, 100, 0.08);
-  --lime-09: rgba(186, 255, 100, 0.09);
-  --lime-12: rgba(186, 255, 100, 0.12);
-  --lime-14: rgba(186, 255, 100, 0.14);
-  --lime-18: rgba(186, 255, 100, 0.18);
-  --lime-28: rgba(186, 255, 100, 0.28);
+  --lime-06: rgba(189, 239, 200, 0.2);
+  --lime-08: rgba(189, 239, 200, 0.24);
+  --lime-09: rgba(189, 239, 200, 0.28);
+  --lime-12: rgba(189, 239, 200, 0.34);
+  --lime-14: rgba(189, 239, 200, 0.4);
+  --lime-18: rgba(189, 239, 200, 0.52);
+  --lime-28: rgba(47, 118, 88, 0.22);
   --orange: #ffad72;
   --orange-12: rgba(255, 173, 114, 0.12);
   --pink: #ff7d9d;
@@ -57,10 +59,10 @@
   --location-blue: #42a5ff;
 
   /* Card gradients */
-  --step-gradient-start: #153631;
-  --step-gradient-end: #0d2724;
-  --donation-gradient-start: #1a3c34;
-  --donation-gradient-end: #102924;
+  --step-gradient-start: #d2f2ed;
+  --step-gradient-end: #eaf9f6;
+  --donation-gradient-start: #d0f1e9;
+  --donation-gradient-end: #e7f8f4;
 
   /* Map territory palette */
   --territory-1: #31d696;
@@ -90,7 +92,7 @@
   --partner-tb: #ba884f;
 
   /* Charity badge palette */
-  --charity-sos: #baff64;
+  --charity-sos: #bdefc8;
   --charity-food-school: #ffad72;
   --charity-kindness: #93c8ff;
 }

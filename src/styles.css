@@ -42,10 +42,10 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
   border-radius: 15px;
   border: 1px solid var(--accent-border);
   background: var(--surface-brand);
-  color: var(--lime);
+  color: var(--text-accent);
   font: 800 18px/1 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
-.brand-mark span { color: var(--white); }
+.brand-mark span { color: var(--text-primary); }
 
 .mode-switch { display: flex; align-items: center; flex: 1; min-width: 0; gap: 3px; }
 .mode-switch button {
@@ -57,7 +57,7 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
   font-size: 14px;
   font-weight: 600;
 }
-.mode-switch button.active { color: var(--ink); background: var(--lime); }
+.mode-switch button.active { color: var(--text-on-accent); background: var(--lime); }
 
 .icon-button {
   width: 43px;
@@ -93,7 +93,7 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
   gap: 7px;
   padding: 10px 14px;
   border-radius: 20px;
-  color: var(--ink);
+  color: var(--text-on-accent);
   background: var(--light-control);
   box-shadow: 0 8px 24px var(--shadow-control);
   font-size: 14px;
@@ -110,7 +110,7 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
   place-items: center;
   border: 0;
   border-radius: 50%;
-  color: var(--ink);
+  color: var(--text-on-accent);
   background: var(--light-control);
   box-shadow: 0 8px 24px var(--shadow-control-strong);
 }
@@ -137,9 +137,9 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
   font-weight: 700;
   box-shadow: 0 10px 30px var(--shadow-action);
 }
-.partner-toggle { flex-direction: column; gap: 1px; color: var(--ink); background: var(--white); font-size: 11px; }
-.partner-toggle.selected { color: var(--white); background: var(--surface-toggle-active); }
-.start-button { color: var(--ink); background: var(--lime); font-size: 16px; }
+.partner-toggle { flex-direction: column; gap: 1px; color: var(--text-on-accent); background: var(--white); font-size: 11px; }
+.partner-toggle.selected { color: var(--text-on-accent); background: var(--surface-toggle-active); }
+.start-button { color: var(--text-on-accent); background: var(--lime); font-size: 16px; }
 .runner-card {
   min-width: 0;
   min-height: 68px;
@@ -167,7 +167,7 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--ink);
+  color: var(--text-on-accent);
   background: var(--lime);
   font-size: 12px;
   font-weight: 700;
@@ -211,8 +211,8 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 .bottom-nav button { min-width: 60px; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 0; background: var(--transparent); color: var(--text-nav-muted); }
 .bottom-nav button span { width: 43px; height: 40px; display: grid; place-items: center; border-radius: 14px; }
 .bottom-nav button small { font-size: 12px; font-weight: 600; }
-.bottom-nav button.active { color: var(--lime); }
-.bottom-nav button.active span { color: var(--ink); background: var(--lime); }
+.bottom-nav button.active { color: var(--text-accent); }
+.bottom-nav button.active span { color: var(--text-on-accent); background: var(--lime); }
 
 .content-screen { background: var(--ink); }
 .scroll-content {
@@ -223,7 +223,7 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 }
 .scroll-content::-webkit-scrollbar { display: none; }
 .page-intro { margin: 0 3px 24px; }
-.eyebrow { margin: 0 0 7px; color: var(--lime) !important; font-size: 11px !important; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.eyebrow { margin: 0 0 7px; color: var(--text-accent) !important; font-size: 11px !important; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
 .page-intro h1 { margin: 0 0 8px; max-width: 390px; font: 700 clamp(29px, 8vw, 40px)/1.06 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: -.04em; }
 .page-intro > p:last-child { margin: 0; color: var(--muted); font-size: 14px; }
 
@@ -245,12 +245,12 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 }
 .ring::before { content: ''; grid-area: 1/1; width: 119px; aspect-ratio: 1; border-radius: 50%; background: var(--surface-brand); }
 .ring > div { position: relative; grid-area: 1/1; display: flex; flex-direction: column; align-items: center; }
-.ring svg { color: var(--lime); }
+.ring svg { color: var(--text-accent); }
 .ring strong { margin-top: 4px; font: 800 24px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
 .ring span { color: var(--muted); font-size: 10px; }
 .step-copy h2 { margin: 12px 0 7px; font: 700 19px/1.2 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
 .step-copy p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
-.status-pill { width: fit-content; padding: 6px 9px; display: flex; align-items: center; gap: 5px; border-radius: 12px; color: var(--ink); background: var(--lime); font-size: 10px; font-weight: 800; }
+.status-pill { width: fit-content; padding: 6px 9px; display: flex; align-items: center; gap: 5px; border-radius: 12px; color: var(--text-on-accent); background: var(--lime); font-size: 10px; font-weight: 800; }
 
 .metric-grid { margin: 13px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .metric-card { min-height: 142px; padding: 16px; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 23px; background: var(--surface); }
@@ -259,7 +259,7 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 .metric-card > span { margin-bottom: 4px; color: var(--muted); font-size: 12px; }
 .metric-card strong { font: 700 28px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
 .metric-card strong small { margin-left: 5px; color: var(--muted); font: 600 11px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-.metric-card.lime .metric-icon { color: var(--lime); background: var(--lime-12); }
+.metric-card.lime .metric-icon { color: var(--text-accent); background: var(--lime-12); }
 .metric-card.orange .metric-icon { color: var(--orange); background: var(--orange-12); }
 .metric-card.pink .metric-icon { color: var(--pink); background: var(--pink-12); }
 .metric-card.blue .metric-icon { color: var(--blue); background: var(--blue-12); }
@@ -267,14 +267,14 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 .insight-card, .charities { margin: 13px 0; padding: 19px; border: 1px solid var(--line); border-radius: 25px; background: var(--surface); }
 .card-heading { display: flex; align-items: flex-start; justify-content: space-between; }
 .card-heading h2 { margin: 0; font: 700 17px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
-.card-heading > span { color: var(--lime); font-weight: 700; font-size: 13px; }
-.card-heading button { border: 0; color: var(--lime); background: var(--transparent); font-size: 12px; }
+.card-heading > span { color: var(--text-accent); font-weight: 700; font-size: 13px; }
+.card-heading button { border: 0; color: var(--text-accent); background: var(--transparent); font-size: 12px; }
 .activity-chart { height: 100px; margin-top: 26px; display: flex; align-items: flex-end; gap: 6px; }
 .activity-chart i { flex: 1; min-height: 5px; border-radius: 4px; background: var(--surface-avatar); }
 .activity-chart i.current { background: var(--lime); box-shadow: 0 0 14px var(--lime-28); }
 .chart-labels { margin-top: 8px; display: flex; justify-content: space-between; color: var(--text-chart-muted); font-size: 9px; }
 .compact-card { margin: 13px 0; padding: 17px; display: flex; align-items: center; gap: 13px; border: 1px solid var(--line); border-radius: 21px; background: var(--surface-brand); }
-.compact-card > svg:first-child { flex: 0 0 auto; color: var(--lime); }
+.compact-card > svg:first-child { flex: 0 0 auto; color: var(--text-accent); }
 .compact-card > svg:last-child { margin-left: auto; color: var(--muted); }
 .compact-card div { display: flex; flex-direction: column; gap: 3px; }
 .compact-card strong { font-size: 13px; }
@@ -282,16 +282,16 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 
 .donation-screen { background: radial-gradient(circle at 80% 13%, var(--lime-09), var(--transparent) 28%), var(--ink); }
 .donation-hero { padding: 24px 20px; text-align: center; border: 1px solid var(--lime-18); border-radius: 29px; background: linear-gradient(150deg, var(--donation-gradient-start), var(--donation-gradient-end)); }
-.donation-icon { width: 47px; height: 47px; margin: 0 auto 10px; display: grid; place-items: center; border-radius: 15px; color: var(--ink); background: var(--lime); }
+.donation-icon { width: 47px; height: 47px; margin: 0 auto 10px; display: grid; place-items: center; border-radius: 15px; color: var(--text-on-accent); background: var(--lime); }
 .donation-hero p { margin: 0 0 3px; color: var(--muted); font-size: 12px; }
 .donation-hero > strong { font: 800 44px -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: -.04em; }
 .donation-progress { height: 7px; margin: 23px 0 8px; overflow: hidden; border-radius: 7px; background: var(--surface-donation-progress); }
 .donation-progress span { width: 84.26%; height: 100%; display: block; border-radius: 7px; background: var(--lime); }
 .progress-copy { display: flex; justify-content: space-between; color: var(--muted); font-size: 10px; }
 .partner-message { margin: 12px 0; padding: 17px; display: flex; gap: 12px; border: 1px solid var(--lime-14); border-radius: 21px; background: var(--lime-06); }
-.partner-message > div { width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center; border-radius: 12px; color: var(--lime); background: var(--lime-12); }
+.partner-message > div { width: 38px; height: 38px; flex: 0 0 38px; display: grid; place-items: center; border-radius: 12px; color: var(--text-accent); background: var(--lime-12); }
 .partner-message p { margin: 0; color: var(--muted); font-size: 11px; line-height: 1.55; }
-.partner-message strong { display: block; margin-bottom: 2px; color: var(--white); font-size: 12px; }
+.partner-message strong { display: block; margin-bottom: 2px; color: var(--text-primary); font-size: 12px; }
 .impact-summary { margin: 12px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .impact-summary div { padding: 17px; display: flex; flex-direction: column; gap: 6px; border: 1px solid var(--line); border-radius: 21px; background: var(--surface); }
 .impact-summary span { color: var(--muted); font-size: 10px; }
@@ -302,7 +302,7 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
 .charity-row div { min-width: 0; display: flex; flex: 1; flex-direction: column; gap: 2px; }
 .charity-row div strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 12px; }
 .charity-row div span { color: var(--muted); font-size: 10px; }
-.charity-row b { color: var(--lime); font-size: 12px; }
+.charity-row b { color: var(--text-accent); font-size: 12px; }
 
 @media (max-width: 390px) {
   .mode-switch button { padding-inline: 7px; font-size: 13px; }
