@@ -3,7 +3,10 @@ import L from 'leaflet'
 
 const BANGKOK = [13.7563, 100.5018]
 const THAILAND_BOUNDS = L.latLngBounds([5.55, 97.25], [20.48, 105.65])
-const territoryColors = ['#31d696', '#8e62e8', '#238be6', '#f37a55', '#d6dc47', '#55bf71', '#32b9b5']
+const territoryColors = [
+  'var(--territory-1)', 'var(--territory-2)', 'var(--territory-3)', 'var(--territory-4)',
+  'var(--territory-5)', 'var(--territory-6)', 'var(--territory-7)',
+]
 
 const territories = [
   [[13.80, 100.43], [13.84, 100.49], [13.81, 100.54], [13.76, 100.51], [13.76, 100.45]],
@@ -19,14 +22,14 @@ const territories = [
 ]
 
 const partners = [
-  ['MK', 13.744, 100.534, '#e83c49'], ['J', 13.751, 100.501, '#ff7043'],
-  ['AM', 13.762, 100.566, '#f6c344'], ['CP', 13.735, 100.56, '#e53935'],
-  ['BB', 13.785, 100.533, '#f58d42'], ['K', 13.71, 100.512, '#50b55b'],
-  ['PL', 13.802, 100.557, '#5a8bd8'], ['S&P', 13.728, 100.586, '#4f6fb2'],
-  ['C', 13.773, 100.611, '#e36f9b'], ['G', 13.69, 100.546, '#5dbb63'],
-  ['Y', 13.823, 100.48, '#f6a623'], ['JJ', 13.793, 100.445, '#9858b8'],
-  ['P', 13.683, 100.486, '#2eb9aa'], ['BR', 13.746, 100.64, '#ec6c3e'],
-  ['N', 13.855, 100.52, '#4e9bdb'], ['TB', 13.718, 100.435, '#ba884f'],
+  ['MK', 13.744, 100.534, 'var(--partner-mk)'], ['J', 13.751, 100.501, 'var(--partner-j)'],
+  ['AM', 13.762, 100.566, 'var(--partner-am)'], ['CP', 13.735, 100.56, 'var(--partner-cp)'],
+  ['BB', 13.785, 100.533, 'var(--partner-bb)'], ['K', 13.71, 100.512, 'var(--partner-k)'],
+  ['PL', 13.802, 100.557, 'var(--partner-pl)'], ['S&P', 13.728, 100.586, 'var(--partner-sp)'],
+  ['C', 13.773, 100.611, 'var(--partner-c)'], ['G', 13.69, 100.546, 'var(--partner-g)'],
+  ['Y', 13.823, 100.48, 'var(--partner-y)'], ['JJ', 13.793, 100.445, 'var(--partner-jj)'],
+  ['P', 13.683, 100.486, 'var(--partner-p)'], ['BR', 13.746, 100.64, 'var(--partner-br)'],
+  ['N', 13.855, 100.52, 'var(--partner-n)'], ['TB', 13.718, 100.435, 'var(--partner-tb)'],
 ]
 
 function TerritoryMap({ showPartners, locateSignal }) {
@@ -104,9 +107,9 @@ function TerritoryMap({ showPartners, locateSignal }) {
         else {
           userMarker.current = L.circleMarker(visiblePosition, {
             radius: 9,
-            color: '#fff',
+            color: 'var(--pure-white)',
             weight: 4,
-            fillColor: '#42a5ff',
+            fillColor: 'var(--location-blue)',
             fillOpacity: 1,
           }).addTo(map.current)
         }
@@ -116,7 +119,11 @@ function TerritoryMap({ showPartners, locateSignal }) {
       () => {
         if (!userMarker.current) {
           userMarker.current = L.circleMarker(BANGKOK, {
-            radius: 9, color: '#fff', weight: 4, fillColor: '#42a5ff', fillOpacity: 1,
+            radius: 9,
+            color: 'var(--pure-white)',
+            weight: 4,
+            fillColor: 'var(--location-blue)',
+            fillOpacity: 1,
           }).addTo(map.current)
         }
         map.current.flyTo(BANGKOK, 12, { duration: 0.8 })

@@ -1,0 +1,96 @@
+:root {
+  /* Core app palette */
+  --ink: #071d1b;
+  --surface: #0d2825;
+  --surface-2: #15312e;
+  --surface-brand: #102d29;
+  --surface-map: #0a2321;
+  --surface-toggle-active: #1b5550;
+  --surface-avatar: #31524d;
+  --surface-page-edge: #051513;
+  --surface-donation-progress: #2e4a43;
+  --surface-charity-logo-text: #0b2925;
+  --text-primary: #ecf3e8;
+  --muted: #91a7a0;
+  --text-nav-muted: #7f9690;
+  --text-mode-muted: #9bada7;
+  --text-chart-muted: #69827c;
+  --lime: #baff64;
+  --white: #f5f8ed;
+  --pure-white: #ffffff;
+  --pure-black: #000000;
+  --transparent: transparent;
+
+  /* Borders, overlays, and shadows */
+  --line: rgba(235, 248, 231, 0.1);
+  --top-bar-glass: rgba(7, 29, 27, 0.96);
+  --accent-border: rgba(186, 255, 100, 0.32);
+  --map-fade-light: rgba(4, 22, 21, 0.06);
+  --map-fade-medium: rgba(4, 22, 21, 0.62);
+  --map-fade-heavy: rgba(4, 22, 21, 0.92);
+  --light-control: rgba(245, 248, 237, 0.96);
+  --runner-border: rgba(255, 255, 255, 0.12);
+  --runner-glass: rgba(8, 32, 30, 0.9);
+  --toast-glass: rgba(8, 32, 30, 0.86);
+  --marker-border: rgba(255, 255, 255, 0.92);
+  --bottom-nav-glass: rgba(9, 31, 29, 0.96);
+  --shadow-app: rgba(0, 0, 0, 0.35);
+  --shadow-control: rgba(0, 0, 0, 0.2);
+  --shadow-control-strong: rgba(0, 0, 0, 0.24);
+  --shadow-action: rgba(0, 0, 0, 0.26);
+  --shadow-marker: rgba(0, 0, 0, 0.4);
+
+  /* Accent transparencies */
+  --lime-06: rgba(186, 255, 100, 0.06);
+  --lime-08: rgba(186, 255, 100, 0.08);
+  --lime-09: rgba(186, 255, 100, 0.09);
+  --lime-12: rgba(186, 255, 100, 0.12);
+  --lime-14: rgba(186, 255, 100, 0.14);
+  --lime-18: rgba(186, 255, 100, 0.18);
+  --lime-28: rgba(186, 255, 100, 0.28);
+  --orange: #ffad72;
+  --orange-12: rgba(255, 173, 114, 0.12);
+  --pink: #ff7d9d;
+  --pink-12: rgba(255, 125, 157, 0.12);
+  --blue: #93c8ff;
+  --blue-12: rgba(147, 200, 255, 0.12);
+  --location-blue: #42a5ff;
+
+  /* Card gradients */
+  --step-gradient-start: #153631;
+  --step-gradient-end: #0d2724;
+  --donation-gradient-start: #1a3c34;
+  --donation-gradient-end: #102924;
+
+  /* Map territory palette */
+  --territory-1: #31d696;
+  --territory-2: #8e62e8;
+  --territory-3: #238be6;
+  --territory-4: #f37a55;
+  --territory-5: #d6dc47;
+  --territory-6: #55bf71;
+  --territory-7: #32b9b5;
+
+  /* Food partner marker palette */
+  --partner-mk: #e83c49;
+  --partner-j: #ff7043;
+  --partner-am: #f6c344;
+  --partner-cp: #e53935;
+  --partner-bb: #f58d42;
+  --partner-k: #50b55b;
+  --partner-pl: #5a8bd8;
+  --partner-sp: #4f6fb2;
+  --partner-c: #e36f9b;
+  --partner-g: #5dbb63;
+  --partner-y: #f6a623;
+  --partner-jj: #9858b8;
+  --partner-p: #2eb9aa;
+  --partner-br: #ec6c3e;
+  --partner-n: #4e9bdb;
+  --partner-tb: #ba884f;
+
+  /* Charity badge palette */
+  --charity-sos: #baff64;
+  --charity-food-school: #ffad72;
+  --charity-kindness: #93c8ff;
+}

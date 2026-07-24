@@ -51,14 +51,14 @@ function App() {
   )
 }
 
-function TopBar({ active = 'solo', navigate }) {
+function TopBar({ active = 'map', navigate }) {
   return (
     <header className="top-bar">
       <button className="brand-mark" aria-label="cRun home" onClick={() => navigate('play')}>
         <span>c</span>R
       </button>
       <nav className="mode-switch" aria-label="App sections">
-        <button className={active === 'solo' ? 'active' : ''}>Solo</button>
+        <button className={active === 'map' ? 'active' : ''} onClick={() => navigate('play')}>Map</button>
         <button className={active === 'health' ? 'active' : ''} onClick={() => navigate('health')}>Health</button>
         <button className={active === 'donation' ? 'active' : ''} onClick={() => navigate('donation')}>Donation</button>
       </nav>
@@ -179,9 +179,9 @@ function DonationPage({ navigate }) {
         </div>
         <section className="charities">
           <div className="card-heading"><div><p className="eyebrow">This month</p><h2>Your charities</h2></div><button>View all</button></div>
-          <CharityRow color="#baff64" initials="SC" name="Scholars of Sustenance" cause="Food rescue in Bangkok" amount="฿642" />
-          <CharityRow color="#ffad72" initials="TF" name="The Food School Project" cause="Meals for local communities" amount="฿385" />
-          <CharityRow color="#93c8ff" initials="BK" name="Bangkok Kindness" cause="Community health support" amount="฿257" />
+          <CharityRow color="var(--charity-sos)" initials="SC" name="Scholars of Sustenance" cause="Food rescue in Bangkok" amount="฿642" />
+          <CharityRow color="var(--charity-food-school)" initials="TF" name="The Food School Project" cause="Meals for local communities" amount="฿385" />
+          <CharityRow color="var(--charity-kindness)" initials="BK" name="Bangkok Kindness" cause="Community health support" amount="฿257" />
         </section>
         <section className="compact-card"><Users /><div><strong>12,408 runners moving together</strong><span>฿248,930 donated across Bangkok this month.</span></div></section>
       </div>
