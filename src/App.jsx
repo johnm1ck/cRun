@@ -90,8 +90,8 @@ function PlayPage({ navigate }) {
             <span>{showPartners ? 'Partners on' : 'Partners'}</span>
           </button>
           <div className="runner-card">
-            <span className="runner-avatar">JM</span>
-            <div><strong>Bangkok Pace</strong><small>Territory runner · #247</small></div>
+            <span className="runner-avatar">TW</span>
+            <div><strong>Te Waramet</strong><small>Territory Ruler · #247</small></div>
           </div>
           <button className="start-button"><Footprints size={21} /> Start</button>
         </div>
