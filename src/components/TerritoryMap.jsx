@@ -32,11 +32,20 @@ const partners = [
   ['N', 13.855, 100.52, 'var(--partner-n)'], ['TB', 13.718, 100.435, 'var(--partner-tb)'],
 ]
 
-function TerritoryMap({ showPartners, locateSignal, runMode = false }) {
+function TerritoryMap({
+  showPartners,
+  locateSignal,
+  runMode = false,
+  runPath = [],
+  loopClosed = false,
+  captureColor = 'var(--capture-region-green)',
+}) {
   const mapNode = useRef(null)
   const map = useRef(null)
   const partnerLayer = useRef(null)
   const userMarker = useRef(null)
+  const routeLine = useRef(null)
+  const capturedPolygon = useRef(null)
   const [locationState, setLocationState] = useState('')
 
   useEffect(() => {
@@ -94,12 +103,48 @@ function TerritoryMap({ showPartners, locateSignal, runMode = false }) {
   }, [showPartners])
 
   useEffect(() => {
+    if (!map.current || !runMode || runPath.length === 0) return
+
+    if (routeLine.current) {
+      routeLine.current.setLatLngs(runPath)
+      routeLine.current.setStyle({ color: captureColor })
+    } else {
+      routeLine.current = L.polyline(runPath, {
+        color: captureColor,
+        weight: 5,
+        opacity: 0.95,
+        lineCap: 'round',
+        lineJoin: 'round',
+      }).addTo(map.current)
+    }
+
+    const latestPoint = runPath[runPath.length - 1]
+    userMarker.current?.setLatLng(latestPoint)
+    map.current.panTo(latestPoint, { animate: true, duration: 0.4 })
+
+    if (loopClosed) {
+      if (capturedPolygon.current) {
+        capturedPolygon.current.setLatLngs(runPath)
+        capturedPolygon.current.setStyle({ color: captureColor, fillColor: captureColor })
+      } else {
+        capturedPolygon.current = L.polygon(runPath, {
+          color: captureColor,
+          weight: 3,
+          opacity: 1,
+          fillColor: captureColor,
+          fillOpacity: 0.42,
+        }).addTo(map.current)
+      }
+    }
+  }, [captureColor, loopClosed, runMode, runPath])
+
+  useEffect(() => {
     if (!map.current) return
     if (!navigator.geolocation) {
-      setLocationState('Location unavailable')
+      setLocationState('ไม่สามารถใช้ตำแหน่งได้')
       return
     }
-    setLocationState('Finding you…')
+    setLocationState('กำลังค้นหาตำแหน่ง…')
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         const current = L.latLng(coords.latitude, coords.longitude)
@@ -124,8 +169,8 @@ function TerritoryMap({ showPartners, locateSignal, runMode = false }) {
             fillOpacity: 1,
           }).addTo(map.current)
         }
-        map.current.flyTo(visiblePosition, 13, { duration: 0.8 })
-        setLocationState(inThailand ? 'Current location' : 'Showing Bangkok')
+        map.current.flyTo(visiblePosition, runMode ? 16 : 13, { duration: 0.8 })
+        setLocationState(inThailand ? 'ตำแหน่งปัจจุบัน' : 'กำลังแสดงกรุงเทพฯ')
       },
       () => {
         if (!userMarker.current && runMode) {
@@ -146,8 +191,8 @@ function TerritoryMap({ showPartners, locateSignal, runMode = false }) {
             fillOpacity: 1,
           }).addTo(map.current)
         }
-        map.current.flyTo(BANGKOK, 12, { duration: 0.8 })
-        setLocationState('Bangkok demo location')
+        map.current.flyTo(BANGKOK, runMode ? 16 : 12, { duration: 0.8 })
+        setLocationState('ตำแหน่งจำลองในกรุงเทพฯ')
       },
       { enableHighAccuracy: true, timeout: 6000, maximumAge: 300000 },
     )

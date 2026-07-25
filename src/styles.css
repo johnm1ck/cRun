@@ -343,6 +343,58 @@ button:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
   gap: 10px;
 }
 .run-map-tools .run-circle { position: static; }
+.color-picker {
+  position: absolute;
+  z-index: 610;
+  top: calc(132px + env(safe-area-inset-top));
+  right: 17px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  gap: 8px;
+}
+.color-button {
+  min-height: 42px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  color: var(--text-primary);
+  background: var(--light-control);
+  box-shadow: 0 7px 20px var(--shadow-control);
+  font-size: 12px;
+  font-weight: 800;
+}
+.color-button i {
+  width: 17px;
+  height: 17px;
+  border: 2px solid var(--pure-white);
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.color-palette {
+  padding: 8px;
+  display: flex;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 19px;
+  background: var(--light-control);
+  box-shadow: 0 8px 22px var(--shadow-control-strong);
+}
+.color-palette button {
+  width: 27px;
+  height: 27px;
+  border: 3px solid var(--pure-white);
+  border-radius: 50%;
+  background: var(--swatch);
+  box-shadow: 0 0 0 1px var(--line);
+}
+.color-palette button.selected {
+  box-shadow: 0 0 0 2px var(--text-primary);
+  transform: scale(1.08);
+}
 .run-position-wrap { background: var(--transparent); border: 0; }
 .run-position-marker {
   width: 44px;

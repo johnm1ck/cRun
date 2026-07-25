@@ -1,7 +1,8 @@
 {
-  "name": "cRun — Charity Running",
+  "name": "cRun — วิ่งเพื่อการกุศล",
   "short_name": "cRun",
-  "description": "Move, capture Bangkok, and turn steps into donations.",
+  "description": "วิ่ง ยึดพื้นที่กรุงเทพฯ และเปลี่ยนทุกก้าวเป็นเงินบริจาค",
+  "lang": "th",
   "id": "./",
   "start_url": "./",
   "scope": "./",

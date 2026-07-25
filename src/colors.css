@@ -59,6 +59,11 @@
   --location-blue: #42a5ff;
   --capture-status-text: #254965;
   --capture-status-background: #dceeff;
+  --capture-region-green: #72c98f;
+  --capture-region-turquoise: #4fc5ba;
+  --capture-region-blue: #6f9fe8;
+  --capture-region-coral: #ed8f82;
+  --capture-region-violet: #9a86d6;
 
   /* Card gradients */
   --step-gradient-start: #d2f2ed;
