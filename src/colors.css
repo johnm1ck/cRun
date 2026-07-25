@@ -57,6 +57,8 @@
   --blue: #93c8ff;
   --blue-12: rgba(147, 200, 255, 0.12);
   --location-blue: #42a5ff;
+  --capture-status-text: #254965;
+  --capture-status-background: #dceeff;
 
   /* Card gradients */
   --step-gradient-start: #d2f2ed;

@@ -32,7 +32,7 @@ const partners = [
   ['N', 13.855, 100.52, 'var(--partner-n)'], ['TB', 13.718, 100.435, 'var(--partner-tb)'],
 ]
 
-function TerritoryMap({ showPartners, locateSignal }) {
+function TerritoryMap({ showPartners, locateSignal, runMode = false }) {
   const mapNode = useRef(null)
   const map = useRef(null)
   const partnerLayer = useRef(null)
@@ -43,7 +43,7 @@ function TerritoryMap({ showPartners, locateSignal }) {
     if (!mapNode.current || map.current) return
     map.current = L.map(mapNode.current, {
       center: BANGKOK,
-      zoom: 11,
+      zoom: runMode ? 12 : 11,
       minZoom: 6,
       maxZoom: 18,
       zoomControl: false,
@@ -52,21 +52,23 @@ function TerritoryMap({ showPartners, locateSignal }) {
       maxBoundsViscosity: 1,
     })
 
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    L.tileLayer(`https://{s}.basemaps.cartocdn.com/${runMode ? 'light_all' : 'dark_all'}/{z}/{x}/{y}{r}.png`, {
       subdomains: 'abcd',
       maxZoom: 20,
     }).addTo(map.current)
 
-    territories.forEach((points, index) => {
-      L.polygon(points, {
-        color: territoryColors[index % territoryColors.length],
-        weight: 1.2,
-        opacity: 0.85,
-        fillColor: territoryColors[index % territoryColors.length],
-        fillOpacity: 0.35,
-        interactive: false,
-      }).addTo(map.current)
-    })
+    if (!runMode) {
+      territories.forEach((points, index) => {
+        L.polygon(points, {
+          color: territoryColors[index % territoryColors.length],
+          weight: 1.2,
+          opacity: 0.85,
+          fillColor: territoryColors[index % territoryColors.length],
+          fillOpacity: 0.35,
+          interactive: false,
+        }).addTo(map.current)
+      })
+    }
 
     partnerLayer.current = L.layerGroup()
     partners.forEach(([name, lat, lng, color]) => {
@@ -83,7 +85,7 @@ function TerritoryMap({ showPartners, locateSignal }) {
       map.current?.remove()
       map.current = null
     }
-  }, [])
+  }, [runMode])
 
   useEffect(() => {
     if (!map.current || !partnerLayer.current) return
@@ -104,7 +106,16 @@ function TerritoryMap({ showPartners, locateSignal }) {
         const inThailand = THAILAND_BOUNDS.contains(current)
         const visiblePosition = inThailand ? current : L.latLng(BANGKOK)
         if (userMarker.current) userMarker.current.setLatLng(visiblePosition)
-        else {
+        else if (runMode) {
+          userMarker.current = L.marker(visiblePosition, {
+            icon: L.divIcon({
+              className: 'run-position-wrap',
+              html: '<span class="run-position-marker">●</span>',
+              iconSize: [44, 44],
+              iconAnchor: [22, 22],
+            }),
+          }).addTo(map.current)
+        } else {
           userMarker.current = L.circleMarker(visiblePosition, {
             radius: 9,
             color: 'var(--pure-white)',
@@ -117,7 +128,16 @@ function TerritoryMap({ showPartners, locateSignal }) {
         setLocationState(inThailand ? 'Current location' : 'Showing Bangkok')
       },
       () => {
-        if (!userMarker.current) {
+        if (!userMarker.current && runMode) {
+          userMarker.current = L.marker(BANGKOK, {
+            icon: L.divIcon({
+              className: 'run-position-wrap',
+              html: '<span class="run-position-marker">●</span>',
+              iconSize: [44, 44],
+              iconAnchor: [22, 22],
+            }),
+          }).addTo(map.current)
+        } else if (!userMarker.current) {
           userMarker.current = L.circleMarker(BANGKOK, {
             radius: 9,
             color: 'var(--pure-white)',
@@ -131,7 +151,7 @@ function TerritoryMap({ showPartners, locateSignal }) {
       },
       { enableHighAccuracy: true, timeout: 6000, maximumAge: 300000 },
     )
-  }, [locateSignal])
+  }, [locateSignal, runMode])
 
   return (
     <>

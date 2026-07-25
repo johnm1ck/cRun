@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   Activity,
+  ArrowLeft,
   Bell,
   ChevronRight,
   CircleDollarSign,
@@ -9,7 +10,9 @@ import {
   Footprints,
   Heart,
   LocateFixed,
+  Layers,
   Map as MapIcon,
+  Pause,
   Play,
   Route,
   ShoppingBag,
@@ -29,6 +32,7 @@ function routeFromHash() {
 
 function App() {
   const [page, setPage] = useState(routeFromHash)
+  const [runStage, setRunStage] = useState('idle')
 
   useEffect(() => {
     const onHashChange = () => setPage(routeFromHash())
@@ -43,10 +47,10 @@ function App() {
 
   return (
     <main className="app-shell">
-      {page === 'play' && <PlayPage navigate={navigate} />}
+      {page === 'play' && <PlayPage navigate={navigate} runStage={runStage} setRunStage={setRunStage} />}
       {page === 'health' && <HealthPage navigate={navigate} />}
       {page === 'donation' && <DonationPage navigate={navigate} />}
-      <BottomNav />
+      {runStage === 'idle' && <BottomNav />}
     </main>
   )
 }
@@ -67,9 +71,13 @@ function TopBar({ active = 'map', navigate }) {
   )
 }
 
-function PlayPage({ navigate }) {
+function PlayPage({ navigate, runStage, setRunStage }) {
   const [showPartners, setShowPartners] = useState(false)
   const [locateSignal, setLocateSignal] = useState(0)
+
+  if (runStage !== 'idle') {
+    return <RunSession stage={runStage} setStage={setRunStage} />
+  }
 
   return (
     <section className="map-screen">
@@ -93,12 +101,111 @@ function PlayPage({ navigate }) {
             <span className="runner-avatar">TW</span>
             <div><strong>Te Waramet</strong><small>Territory Ruler · #247</small></div>
           </div>
-          <button className="start-button"><Footprints size={21} /> Start</button>
+          <button className="start-button" onClick={() => setRunStage('running')}><Footprints size={21} /> Start</button>
         </div>
         {showPartners && <div className="partner-hint"><ShoppingBag size={15} /> 16 food partners nearby</div>}
       </div>
     </section>
   )
+}
+
+function RunSession({ stage, setStage }) {
+  const [seconds, setSeconds] = useState(0)
+  const holdTimer = useRef(null)
+
+  useEffect(() => {
+    if (stage !== 'running') return undefined
+    const timer = window.setInterval(() => setSeconds((value) => value + 1), 1000)
+    return () => window.clearInterval(timer)
+  }, [stage])
+
+  useEffect(() => () => window.clearTimeout(holdTimer.current), [])
+
+  const finishRun = () => setStage('summary')
+  const beginFinishHold = () => {
+    window.clearTimeout(holdTimer.current)
+    holdTimer.current = window.setTimeout(finishRun, 900)
+  }
+  const cancelFinishHold = () => window.clearTimeout(holdTimer.current)
+  const duration = formatDuration(seconds)
+  const distance = Math.min(seconds * 0.002, 0.99).toFixed(2)
+
+  if (stage === 'summary') {
+    return (
+      <section className="run-session summary-session">
+        <div className="run-map summary-map">
+          <TerritoryMap showPartners={false} locateSignal={0} runMode />
+          <button className="run-pill resume-pill" onClick={() => setStage('running')}>
+            <ArrowLeft size={20} /> Resume run
+          </button>
+        </div>
+        <div className="summary-sheet">
+          <strong className="captured-area">3.00<small>m²</small></strong>
+          <span className="capture-status complete"><Route size={14} /> Territory captured</span>
+          <div className="run-title">Bangkok Run <span>✎</span></div>
+          <div className="run-metrics summary-metrics">
+            <RunMetric label="Distance" value={distance === '0.00' ? '0.01' : distance} unit="km" />
+            <RunMetric label="Duration" value={duration === '0:00' ? '0:49' : duration} />
+            <RunMetric label="Avg. pace" value="6:18" unit="/km" />
+          </div>
+          <textarea aria-label="Describe your run" placeholder="Describe your run…" />
+          <button className="log-run-button" onClick={() => setStage('idle')}>Log run</button>
+        </div>
+      </section>
+    )
+  }
+
+  return (
+    <section className={`run-session ${stage === 'paused' ? 'is-paused' : ''}`}>
+      <div className="run-map">
+        <TerritoryMap showPartners={false} locateSignal={0} runMode />
+        <button className="run-circle back" aria-label="Exit run" onClick={() => setStage('idle')}><ArrowLeft /></button>
+        <div className="run-map-tools">
+          <button className="run-circle" aria-label="Find my location"><LocateFixed /></button>
+          <button className="run-circle" aria-label="Map layers"><Layers /></button>
+        </div>
+      </div>
+      <div className="run-sheet">
+        <strong className="captured-area">0<small>m²</small></strong>
+        <span className="capture-status"><span className="spinner" /> Capture in progress</span>
+        {stage === 'paused' && <div className="finishing-run"><span>⚑ Finishing run</span></div>}
+        <div className="run-metrics">
+          <RunMetric label="Distance" value={distance} unit="km" />
+          <RunMetric label="Duration" value={duration} />
+          <RunMetric label="Pace" value={seconds > 0 ? '6:18' : '0:00'} unit="/km" />
+        </div>
+        {stage === 'running' ? (
+          <button className="pause-run-button" onClick={() => setStage('paused')}><Pause size={21} /> Pause run</button>
+        ) : (
+          <div className="paused-actions">
+            <button className="resume-run-button" onClick={() => setStage('running')}><Play size={22} /> Resume run</button>
+            <button
+              className="finish-run-button"
+              onPointerDown={beginFinishHold}
+              onPointerUp={cancelFinishHold}
+              onPointerLeave={cancelFinishHold}
+              onPointerCancel={cancelFinishHold}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') finishRun()
+              }}
+            >
+              ⚑ Hold to finish
+            </button>
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
+
+function RunMetric({ label, value, unit }) {
+  return <div><span>{label}</span><strong>{value}<small>{unit}</small></strong></div>
+}
+
+function formatDuration(seconds) {
+  const minutes = Math.floor(seconds / 60)
+  const remainder = String(seconds % 60).padStart(2, '0')
+  return `${minutes}:${remainder}`
 }
 
 function HealthPage({ navigate }) {
